@@ -29,23 +29,41 @@
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s linear;
+            transform-origin: center center;
+        }
+        /* Definicja animacji obrotu */
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
         }
         #playButton.spin #image {
-            transform: rotate(360deg);
+            animation: spin 0.5s linear;
         }
     </style>
 </head>
 <body>
     <button id="playButton">
-        <img id="image" src="https://tr.rbxcdn.com/3b2ad0cfbbd25880e2bb96061387f8c4/768/432/Image/Webp" alt="" title="">
+        <img id="image" src="https://tr.rbxcdn.com/3b2ad0cfbbd25880e2bb96061387f8c4/768/432/Image/Webp" alt="Play Game" title="PLAY">
     </button>
     <script>
         document.getElementById('playButton').addEventListener('click', () => {
-            const playButton = document.getElementById('playButton');
-            playButton.classList.add('spin');
-            
-            // Przekierowanie do gry Roblox bez opóźnienia
+            // Natychmiastowe przekierowanie do gry Roblox
             window.location.href = 'roblox://placeID=13874310483';
+            
+            // Dodanie klasy 'spin' po 0.1 sekundy
+            setTimeout(() => {
+                const playButton = document.getElementById('playButton');
+                playButton.classList.add('spin');
+
+                // Po 6 sekundach usunięcie klasy 'spin'
+                setTimeout(() => {
+                    playButton.classList.remove('spin');
+                }, 6000); // 6 sekund
+            }, 100); // Opóźnienie 0.1 sekundy, aby zapewnić, że przekierowanie do gry odbywa się przed rozpoczęciem animacji
         });
     </script>
 </body>
