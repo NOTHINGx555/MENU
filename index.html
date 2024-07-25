@@ -14,29 +14,42 @@
             background-color: #f0f0f0;
             font-family: Arial, sans-serif;
         }
-        .button {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100%;
-            background-color: #007bff;
-            color: #fff;
-            font-size: 2rem;
-            text-align: center;
-            text-decoration: none;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s;
+        #playButton {
+            cursor: pointer;
+            border: none;
+            padding: 0;
+            background: none;
         }
-        .button:hover {
-            background-color: #0056b3;
+        #image {
+            width: 768px;
+            height: 432px;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        #playButton:hover #image {
+            transform: scale(1.05);
         }
     </style>
 </head>
 <body>
-    <a href="roblox://game/13874310483" class="button">
-        Play Game
-    </a>
+    <button id="playButton">
+        <img id="image" src="https://tr.rbxcdn.com/3b2ad0cfbbd25880e2bb96061387f8c4/768/432/Image/Webp" alt="Play Game" title="PLAY">
+    </button>
+    <script>
+        document.getElementById('playButton').addEventListener('click', () => {
+            // Dodanie efektu obrotu (jeśli potrzebny)
+            document.getElementById('playButton').style.transform = 'rotate(360deg)';
+            document.getElementById('playButton').style.transition = 'transform 0.5s';
+            
+            // Próba otwarcia gry w aplikacji Roblox
+            window.location.href = 'roblox://game/13874310483';
+            
+            // Alternatywnie, otwórz stronę gry w przeglądarce, jeśli aplikacja Roblox nie jest zainstalowana
+            setTimeout(() => {
+                window.open('https://www.roblox.com/games/13874310483/TESTING-Super-League-Soccer', '_blank');
+            }, 1000); // Opóźnienie 1 sekundy, aby upewnić się, że otworzy się aplikacja Roblox
+        });
+    </script>
 </body>
 </html>
