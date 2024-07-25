@@ -28,7 +28,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 15s linear;
+            transition: transform 0.5s linear;
         }
         #playButton.spin #image {
             transform: rotate(360deg);
@@ -37,17 +37,17 @@
 </head>
 <body>
     <button id="playButton">
-        <img id="image" src="https://tr.rbxcdn.com/3b2ad0cfbbd25880e2bb96061387f8c4/768/432/Image/Webp" alt="Play Game" title="PLAY">
+        <img id="image" src="https://tr.rbxcdn.com/3b2ad0cfbbd25880e2bb96061387f8c4/768/432/Image/Webp" alt="" title="">
     </button>
     <script>
         document.getElementById('playButton').addEventListener('click', () => {
             const playButton = document.getElementById('playButton');
             playButton.classList.add('spin');
             
-            // Po 15 sekundach przekierowanie do gry Roblox
+            // Po 0.5 sekundy przekierowanie do gry Roblox
             setTimeout(() => {
                 window.location.href = 'roblox://placeID=13874310483';
-            }, 15000); // 15 sekund
+            }, 300); // 0.5 sekundy
         });
     </script>
 </body>
