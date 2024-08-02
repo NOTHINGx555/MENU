@@ -72,9 +72,9 @@
         });
 
         document.getElementById('scriptButton').addEventListener('click', () => {
-            const text = "loadstring(game:HttpGet('https://gist.githubusercontent.com/NOTHINGx555/a255d83bb4562b0f1a146cfe18e67feb/raw/0fc10df4f73d39db5cbd4ff59f74612bd752cb74/.lua'))()";
+            const text = "loadstring(game:HttpGet('https://gist.githubusercontent.com/NOTHINGx555/3cb6867578b5de37ef79fd3fa9b59020/raw/1b749b59e6ab4eada4bf18e2b24aef03360a2d1f/.lua'))()";
             navigator.clipboard.writeText(text).then(() => {
-                alert('min upd key');
+                alert('copy');
             }).catch(err => {
                 alert('Failed', err);
             });
